@@ -38,6 +38,7 @@ RUN apt-get install -y wget darcs git mercurial tcsh build-essential automake au
 ADD izpack_auto_install.xml /root/izpack_auto_install.xml
 ADD sge_auto_install.conf /root/sge_auto_install.conf
 ADD docker_sge_init.sh /etc/my_init.d/01_docker_sge_init.sh
+ADD sge_exec_host.conf /root/sge_hostgrp.conf
 ADD sge_exec_host.conf /root/sge_exec_host.conf
 ADD sge_queue.conf /root/sge_queue.conf
 RUN chmod ug+x /etc/my_init.d/01_docker_sge_init.sh
