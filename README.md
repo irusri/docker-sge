@@ -1,7 +1,8 @@
 docker-sge
 ==========
 
-Dockerfile to build a container with SGE installed.
+Dockerfile to build a container with SGE installed. Cloned and updated
+from the docker-sge container from gawbul.
 
 To build type:
 

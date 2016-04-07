@@ -1,12 +1,11 @@
-# Dockerfile to build SGE enabled container
-#
-# VERSION 0.1
+# Dockerfile to build SGE enabled container 
 
-# use vanilla ubuntu base image
+# Cloned and updated version of the docker-sge container from gawbul
+
 FROM phusion/baseimage:0.9.15
 
 # maintained by me
-MAINTAINER Steve Moss <gawbul@gmail.com>
+MAINTAINER Robert Syme <rbosyme@gmail.com>
 
 # expose ports
 EXPOSE 6444
