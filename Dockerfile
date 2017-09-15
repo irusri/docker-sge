@@ -4,9 +4,6 @@
 
 FROM phusion/baseimage:0.9.19
 
-# maintained by me
-MAINTAINER Robert Syme <rbosyme@gmail.com>
-
 # expose ports
 EXPOSE 6444
 EXPOSE 6445
