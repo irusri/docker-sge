@@ -47,8 +47,8 @@ WORKDIR $HOME
 
 # retrieve required files
 RUN wget -c http://download.jboss.org/jbosstools/updates/requirements/izpack/4.3.5/IzPack-install-4.3.5.jar
-RUN wget -c http://www.mirrorservice.org/sites/archive.ubuntu.com/ubuntu/pool/main/libz/libzip/libzip1_0.9-3_amd64.deb
-RUN wget -c http://www.mirrorservice.org/sites/archive.ubuntu.com/ubuntu/pool/main/libz/libzip/libzip-dev_0.9-3_amd64.deb
+RUN wget -c http://mirror.global-layer.com/ubuntu/pool/main/libz/libzip/libzip1_0.9-3_amd64.deb
+RUN wget -c http://mirror.global-layer.com/ubuntu/pool/main/libz/libzip/libzip-dev_0.9-3_amd64.deb
 RUN wget -c http://archive.cloudera.com/one-click-install/lucid/cdh3-repository_1.0_all.deb
 
 # install izpack
@@ -70,7 +70,7 @@ RUN apt-get update && apt-get -y install hadoop-0.20 hadoop-0.20-native
 #RUN darcs get --lazy --set-scripts-executable http://arc.liv.ac.uk/repos/darcs/sge
 #RUN git clone http://arc.liv.ac.uk/repos/git/sge
 # download source tarball instead
-RUN wget -c http://arc.liv.ac.uk/downloads/SGE/releases/8.1.8/sge-8.1.8.tar.gz
+RUN wget -c https://arc.liv.ac.uk/downloads/SGE/releases/8.1.8/sge-8.1.8.tar.gz
 RUN tar -zxvf sge-8.1.8.tar.gz
 
 # change working directory
