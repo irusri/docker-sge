@@ -12,9 +12,6 @@ EXPOSE 6444
 EXPOSE 6445
 EXPOSE 6446
 
-# run everything as root to start with
-USER root
-
 # set environment variables
 ENV HOME /root
 
