@@ -49,8 +49,7 @@ RUN echo export SGE_CELL=default >> /etc/bashrc
 RUN ln -s $SGE_ROOT/$SGE_CELL/common/settings.sh /etc/profile.d/sge_settings.sh
 
 # install SGE
-RUN useradd -r -m -U -d /home/sgeuser -s /bin/bash -c "Docker SGE user" sgeuser
-RUN usermod -a -G sudo sgeuser
+RUN useradd -r -m -U -G sudo -d /home/sgeuser -s /bin/bash -c "Docker SGE user" sgeuser
 WORKDIR $SGE_ROOT
 RUN ./inst_sge -m -x -s -auto ~/sge_auto_install.conf \
 && /etc/my_init.d/01_docker_sge_init.sh \
