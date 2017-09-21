@@ -10,7 +10,7 @@ EXPOSE 6445
 EXPOSE 6446
 
 # set environment variables
-ENV HOME /root
+ARG HOME=/root
 
 # regenerate host ssh keys
 RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
@@ -39,16 +39,13 @@ ADD sge_queue.conf /root/sge_queue.conf
 RUN chmod ug+x /etc/my_init.d/01_docker_sge_init.sh
 
 # setup SGE env
-ENV SGE_ROOT /opt/sge
-ENV SGE_CELL default
-RUN echo export SGE_ROOT=/opt/sge >> /etc/bashrc
-RUN echo export SGE_CELL=default >> /etc/bashrc
+ARG SGE_ROOT=/opt/sge
+ARG SGE_CELL=default
 RUN ln -s $SGE_ROOT/$SGE_CELL/common/settings.sh /etc/profile.d/sge_settings.sh
 
 # install SGE
 RUN useradd -r -m -U -G sudo -d /home/sgeuser -s /bin/bash -c "Docker SGE user" sgeuser
-WORKDIR $SGE_ROOT
-RUN ./inst_sge -m -x -s -auto ~/sge_auto_install.conf \
+RUN cd $SGE_ROOT && ./inst_sge -m -x -s -auto $HOME/sge_auto_install.conf \
 && sleep 10 \
 && /etc/init.d/sgemaster.docker-sge restart \
 && /etc/init.d/sgeexecd.docker-sge restart \
@@ -58,15 +55,9 @@ RUN ./inst_sge -m -x -s -auto ~/sge_auto_install.conf \
 && /opt/sge/bin/lx-amd64/qconf -Me $HOME/sge_exec_host.conf \
 && /opt/sge/bin/lx-amd64/qconf -Aq $HOME/sge_queue.conf
 
-ENV PATH /opt/sge/bin:/opt/sge/bin/lx-amd64/:/opt/sge/utilbin/lx-amd64:$PATH
-RUN echo export PATH=/opt/sge/bin:/opt/sge/bin/lx-amd64/:/opt/sge/utilbin/lx-amd64:$PATH >> /etc/bashrc
-
-# return to home directory
-WORKDIR $HOME
-
 # clean up
-RUN rm *.deb
+RUN rm /root/*.deb
 
 # start my_init on execution and pass bash to runit
 ENTRYPOINT ["/sbin/my_init", "--"]
-CMD ["/bin/bash"]
+CMD ["/bin/bash", "--login"]
