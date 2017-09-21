@@ -49,7 +49,8 @@ RUN ln -s $SGE_ROOT/$SGE_CELL/common/settings.sh /etc/profile.d/sge_settings.sh
 RUN useradd -r -m -U -G sudo -d /home/sgeuser -s /bin/bash -c "Docker SGE user" sgeuser
 WORKDIR $SGE_ROOT
 RUN ./inst_sge -m -x -s -auto ~/sge_auto_install.conf \
-&& /etc/my_init.d/01_docker_sge_init.sh \
+&& /etc/init.d/sgemaster.docker-sge restart \
+&& /etc/init.d/sgeexecd.docker-sge restart \
 && sed -i "s/HOSTNAME/`hostname`/" $HOME/sge_exec_host.conf \
 && sed -i "s/HOSTNAME/`hostname`/" $HOME/sge_hostgrp.conf \
 && /opt/sge/bin/lx-amd64/qconf -au sgeuser arusers \
