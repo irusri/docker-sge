@@ -2,7 +2,11 @@
 
 # Cloned and updated version of the docker-sge container from gawbul
 
-FROM phusion/baseimage:0.9.19
+FROM centos:7
+MAINTAINER The CentOS Project <cloud-ops@centos.org>
+LABEL Vendor="CentOS" \
+      License=GPLv2 \
+      Version=2.4.6-40
 
 # expose ports
 EXPOSE 6444
