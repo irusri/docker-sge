@@ -7,7 +7,7 @@ from the docker-sge container from gawbul.
 To build type:
 
 ```
-git clone git@github.com:irusri/docker-sge.git
+https://github.com/irusri/docker-sge.git
 cd docker-sge
 docker build -t irusri/docker-sge .
 ```
