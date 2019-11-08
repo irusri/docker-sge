@@ -21,10 +21,10 @@ docker pull irusri/docker-sge
 To run the image in a container type:
 
 ```
-docker run -it --rm irusri/docker-sge login -f irusri
+docker run -it --rm irusri/docker-sge login -f sgeuser
 ```
 
-**You need the `login -f irusri` as root isn't allowed to submit jobs**
+**You need the `login -f sgeuser` as root isn't allowed to submit jobs**
 
 To submit a job run:
 
