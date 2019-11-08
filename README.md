@@ -7,24 +7,24 @@ from the docker-sge container from gawbul.
 To build type:
 
 ```
-git clone git@github.com:gawbul/docker-sge.git
+git clone git@github.com:irusri/docker-sge.git
 cd docker-sge
-docker build -t gawbul/docker-sge .
+docker build -t irusri/docker-sge .
 ```
 
 To pull from the Docker Hub type:
 
 ```
-docker pull gawbul/docker-sge
+docker pull irusri/docker-sge
 ```
 
 To run the image in a container type:
 
 ```
-docker run -it --rm gawbul/docker-sge login -f sgeuser
+docker run -it --rm irusri/docker-sge login -f irusri
 ```
 
-**You need the `login -f sgeuser` as root isn't allowed to submit jobs**
+**You need the `login -f irusri` as root isn't allowed to submit jobs**
 
 To submit a job run:
 
